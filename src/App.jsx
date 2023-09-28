@@ -33,14 +33,25 @@ const schedule = {
 };
 
 const App = () => (
-    <div>
-      <h1>{schedule.title}</h1>
+  <div className="container mt-3">
+    <h1>{schedule.title}</h1>
+    <div className="row">
       {Object.entries(schedule.courses).map(([key, course]) => (
-        <div key={key}>
-          {course.term} CS {course.number}: {course.title}
+        <div key={key} className="col-md-3">
+          <div className="card mb-3" style={{height: '250px'}}>
+            <div className="card-body">
+              <h3 className="card-title">
+                {course.term} CS {course.number}
+              </h3>
+              <p className="card-text">{course.title}</p>
+              <hr />
+              <p className="card-text">{course.meets}</p>
+            </div>
+          </div>
         </div>
-    ))}
+      ))}
     </div>
-  );
+  </div>
+);
 
 export default App;
