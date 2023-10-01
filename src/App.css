@@ -41,3 +41,33 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 14rem);
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  width: 200px;
+  border: 3px solid rgb(229, 206, 237);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.card-title, .card-body, .card-footer {
+  padding: 5px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-footer {
+  border-top: 2px solid rgb(229, 206, 237);
+  background-color: #f1e9f9;
+}
+
+
+

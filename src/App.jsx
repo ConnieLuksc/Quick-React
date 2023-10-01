@@ -11,9 +11,20 @@ const Main = () => {
   if (isLoading) return <h1>Loading courses data...</h1>;
   if (!data) return <h1>No courses data found</h1>;
 
-  return Object.entries(data.courses).map(([key, course]) => (
-    <div key={key}>{course.title} - {course.term} - {course.number} - {course.meets}</div>
-  ));
+  return (
+    <>
+    <h1>CS Courses for 2018-2019</h1>
+    <div className="course-grid">
+      {Object.entries(data.courses).map(([key, course]) => (
+        <div className="card" key={key}>
+          <div className="card-title">{course.term} CS {course.number}</div>
+          <div className="card-body">{course.title}</div>
+          <div className="card-footer">{course.meets}</div>
+        </div>
+      ))}
+    </div>
+    </>
+  );
 };
 
 
