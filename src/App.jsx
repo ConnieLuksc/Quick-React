@@ -3,8 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
+import TermSelector from './components/TermSelector';
 
 const Main = () => {
+  const [term, setTerm] = useState('Fall');
   const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
 
   if (error) return <h1>Error loading courses data: {`${error}`}</h1>;
@@ -14,8 +16,11 @@ const Main = () => {
   return (
     <>
     <h1>CS Courses for 2018-2019</h1>
+    <TermSelector selection={term} setSelection={setTerm} />
     <div className="course-grid">
-      {Object.entries(data.courses).map(([key, course]) => (
+      {Object.entries(data.courses)
+      .filter(([key, course]) => course.term === term)
+      .map(([key, course]) => (
         <div className="card" key={key}>
           <div className="card-title">{course.term} CS {course.number}</div>
           <div className="card-body">{course.title}</div>
