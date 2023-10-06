@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useJsonQuery } from '../utilities/fetch';
+import { useJsonQuery } from '../utilities/fetch.js';
 import TermSelector from './TermSelector.jsx';
+import CourseCard from './CourseCard.jsx';
 
-const CourseList = ({ term, selected = [], toggleSelected }) => {
+const CourseList = ({ term, selected = [], toggleSelected}) => {
     const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
   
     if (error) return <h1>Error loading courses data: {`${error}`}</h1>;
@@ -14,15 +15,12 @@ const CourseList = ({ term, selected = [], toggleSelected }) => {
         {Object.entries(data.courses)
         .filter(([key, course]) => course.term === term)
         .map(([key, course]) => (
-          <div 
-            className={`card ${selected.includes(key) ? "selected" : ""}`}
-            key={key} 
-            onClick={() => toggleSelected && toggleSelected(key)}
-          >
-            <div className="card-title">{course.term} CS {course.number}</div>
-            <div className="card-body">{course.title}</div>
-            <div className="card-footer">{course.meets}</div>
-          </div>
+            <CourseCard 
+            key={key}
+            course={course}
+            isSelected={selected.includes(key)}
+            onToggle={() => toggleSelected && toggleSelected(key)}
+          />
         ))}
       </div>
     );

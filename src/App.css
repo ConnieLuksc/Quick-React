@@ -41,6 +41,13 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
+.header-row {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 14rem);
