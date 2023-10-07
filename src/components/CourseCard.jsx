@@ -4,7 +4,7 @@ const CourseCard = ({ course, isSelected, onToggle }) => {
     return (
         <div 
             className={`card ${isSelected ? "selected" : ""}`}
-            onClick={() => onToggle(key, course)}
+            onClick={() => onToggle(course.number, course)}
         >
             <div className="card-title">{course.term} CS {course.number}</div>
             <div className="card-body">{course.title}</div>
