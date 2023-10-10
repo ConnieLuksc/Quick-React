@@ -4,6 +4,19 @@ import './CourseCard.css';
 import { isConflicting } from '../utilities/CheckConflict.js'; 
 
 const CourseCard = ({ course, isSelected, isConflicting, onToggle }) => {
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+    };
+
+    if (isEditing) {
+        return <CourseForm course={course} onCancel={handleCancel} />;
+    }
     return (
         <div 
             className={`card ${isSelected ? "selected" : ""}`}
@@ -13,6 +26,7 @@ const CourseCard = ({ course, isSelected, isConflicting, onToggle }) => {
             <div className="card-title">{course.term} CS {course.number}</div>
             <div className="card-body">{course.title}</div>
             <div className="card-footer">{course.meets}</div>
+            <button onClick={handleEdit}>Edit</button>
         </div>
     );
 };
