@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './CourseCard.css';
+import CourseForm from './CourseForm.jsx';
 import { isConflicting } from '../utilities/CheckConflict.js'; 
+
 
 const CourseCard = ({ course, isSelected, isConflicting, onToggle }) => {
     const [isEditing, setIsEditing] = useState(false);

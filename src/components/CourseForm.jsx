@@ -11,6 +11,15 @@ const CourseForm = ({ course, onCancel }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
   };
+  
+  const InputField = ({name, text, state, change}) => (
+    <div className="mb-3">
+      <label htmlFor={name} className="form-label">{text}</label>
+      <input className="form-control" id={name} name={name} 
+        defaultValue={state.values?.[name]} onChange={change} />
+      <div className="invalid-feedback">{state.errors?.[name]}</div>
+    </div>
+  );
 
   return (
     <form onSubmit={handleSubmit}>

@@ -24,6 +24,8 @@ const CourseList = ({ term, selected = [], toggleSelected, courses = {} }) => {
             }}
           />
           
+
+          
           
         )})}
         

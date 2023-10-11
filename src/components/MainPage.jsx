@@ -6,6 +6,7 @@ import '../App.css';
 import { useState } from 'react';
 import { useJsonQuery } from '../utilities/fetch.js';
 
+
 const MainPage =() =>{
     const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
     const [term, setTerm] = useState('Fall');
