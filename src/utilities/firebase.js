@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getDatabase, onValue, ref, update } from 'firebase/database';
 import { initializeApp } from "firebase/app";
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyCM-INIahKIEGFV0Cu28rwN-xOfvnZwx54",
     authDomain: "quickreact-a58e9.firebaseapp.com",
@@ -14,41 +15,23 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-const firebase = initializeApp(firebaseConfig);
-const database = getDatabase(firebase);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// export const useDbData = (path) => {
-//   const [data, setData] = useState();
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => (
-//     onValue(ref(database, path), (snapshot) => {
-//      setData( snapshot.val() );
-//     }, (error) => {
-//       setError(error);
-//     })
-//   ), [ path ]);
-
-//   return [ data, error ];
-// };
 export const useDbData = (path) => {
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-  
-    useEffect(() => {
-      onValue(ref(database, path), (snapshot) => {
-        setData(snapshot.val());
-        setIsLoading(false);
-      }, (error) => {
-        setError(error);
-        setIsLoading(false);
-      });
-    }, [path]);
-  
-    return [data, isLoading, error];
-  };
-  
+  const [data, setData] = useState();
+  const [error, setError] = useState(null);
+
+  useEffect(() => (
+    onValue(ref(database, path), (snapshot) => {
+     setData( snapshot.val() );
+    }, (error) => {
+      setError(error);
+    })
+  ), [ path ]);
+
+  return [ data, error ];
+};
 
 const makeResult = (error) => {
   const timestamp = Date.now();
@@ -66,3 +49,16 @@ export const useDbUpdate = (path) => {
 
   return [updateData, result];
 };
+
+export const importDataToFirebase = async () => {
+    try {
+      const response = await axios.get('https://courses.cs.northwestern.edu/394/data/cs-courses.php');
+      const courses = response.data;
+      await set(ref(database, '/courses'), courses);
+      console.log('Data imported successfully.');
+    } catch (error) {
+      console.error('Error importing data:', error);
+    }
+  };
+
+

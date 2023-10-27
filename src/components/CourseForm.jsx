@@ -58,6 +58,7 @@ const handleSubmit = (evt) => {
   
 
   return (
+    
     <form onSubmit={handleSubmit}>
       <InputField name="title" text="Course Title" state={state} change={change} />
       <InputField name="meets" text="Meeting Times" state={state} change={change} />
