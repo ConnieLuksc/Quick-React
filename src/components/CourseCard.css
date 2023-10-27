@@ -4,3 +4,67 @@
     right: 10px;    
     font-size: 20px; 
 }
+
+.card-overlay {
+    z-index: 10;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-overlay form {
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-overlay input, .card-overlay button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.card-overlay button {
+    background-color: #7e4db3;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-overlay button:hover {
+    background-color: #c6b8ef;
+}
+
+.card button.edit-button {
+    background-color: #c5a0f0;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card button.edit-button:hover {
+    background-color: #ddbcf1;
+    transform: translateY(-2px);
+}
