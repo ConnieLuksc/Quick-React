@@ -34,7 +34,11 @@ const CourseCard = ({ course, isSelected, isConflicting, onToggle }) => {
             <div className="card-title">{course.term} CS {course.number}</div>
             <div className="card-body">{course.title}</div>
             <div className="card-footer">{course.meets}</div>
-            {profile?.isAdmin && <button onClick={handleEdit} className="edit-button">Edit</button>}
+            {profile?.isAdmin ? 
+                <button onClick={handleEdit} className="edit-button">Edit</button>
+                :
+                <div className="not-admin-warning">you cannot change course information since you are not admin</div>
+            }
         </div>
         <div className="card-overlay"><CourseForm course={course} onCancel={handleCancel} /></div>
         </>
