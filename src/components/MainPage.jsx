@@ -5,10 +5,13 @@ import Schedule from './Schedule.jsx';
 import '../App.css';
 import { useState } from 'react';
 import { useJsonQuery } from '../utilities/fetch.js';
+import { useDbData} from '../utilities/firebase'; 
 
 
 const MainPage =() =>{
-    const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
+    const [data, isLoading, error] = useDbData("/");
+    console.log("data",data)
+    console.log("error",error)
     const [term, setTerm] = useState('Fall');
     const [selected, setSelected] = useState([]);
     const [open, setOpen] = useState(false);
