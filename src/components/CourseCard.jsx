@@ -3,6 +3,7 @@ import '../App.css';
 import './CourseCard.css';
 import CourseForm from './CourseForm.jsx';
 import { isConflicting } from '../utilities/CheckConflict.js'; 
+import { useProfile } from '../utilities/profile';
 
 
 const CourseCard = ({ course, isSelected, isConflicting, onToggle }) => {
